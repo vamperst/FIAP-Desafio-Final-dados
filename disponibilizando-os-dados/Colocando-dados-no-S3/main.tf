@@ -63,7 +63,7 @@ resource "aws_lambda_function" "unzip_lambda" {
     variables = {
       S3_BUCKET       = var.s3_bucket_name
       SIGNED_ZIP_URL  = var.signed_zip_url
-      S3_OUTPUT_PREFIX = "unzipped/"
+      S3_OUTPUT_PREFIX = "dados-brutos/"
     }
   }
 }
