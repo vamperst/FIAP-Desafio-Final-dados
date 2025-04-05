@@ -72,7 +72,6 @@ resource "aws_glue_crawler" "s3_crawler" {
 
   s3_target {
     path           = "s3://${data.aws_s3_bucket.existing_bucket.bucket}/${var.s3_data_path}parquet-files/"
-    classification = "parquet"
   }
 
   schema_change_policy {
