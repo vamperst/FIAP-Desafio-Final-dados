@@ -71,8 +71,15 @@ terraform plan --var="s3_bucket_name=$BUCKET_NAME" --var="signed_zip_url=$LINK_T
 
 echo "Terraform rodando apply..."
 terraform apply -auto-approve --var="s3_bucket_name=$BUCKET_NAME" --var="signed_zip_url=$LINK_TO_DATASET"
+# Verificando se o Terraform foi executado com sucesso
+if [ $? -eq 0 ]; then
+    echo "Terraform do lambda executado com sucesso."
+else
+    echo "Erro ao executar o Terraform do lambda."
+    exit 1
+fi
 
-rm -rf .terraform
+rm -rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup
 
 
 
@@ -123,5 +130,6 @@ while true; do
         exit 1
     fi
 done
+rm -rf .terraform .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup
 # Script finalizado
 echo "Script finalizado com sucesso."
