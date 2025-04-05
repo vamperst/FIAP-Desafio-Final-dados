@@ -44,16 +44,9 @@ if [ -d "dataset" ]; then
 else
     echo "O dataset não foi encontrado. Iniciando o download..."
     # Fazendo o download do dataset
-    wget $LINK_TO_DATASET -O dataset.zip
-    # Verificando se o download foi bem-sucedido
-    if [ $? -eq 0 ]; then
-        echo "Download do dataset concluído com sucesso."
-    else
-        echo "Erro ao fazer o download do dataset."
-        exit 1
-    fi
+    
     # Descompactando o arquivo
-    unzip dataset.zip -d dataset
+    unzip ../../dataset.zip -d dataset
     # Verificando se a descompactação foi bem-sucedida
     if [ $? -eq 0 ]; then
         echo "Descompactação do dataset concluída com sucesso."
