@@ -41,6 +41,8 @@ else
     fi
 fi
 
+bash install_terraform_cloudshell.sh
+
 cd Colocando-dados-no-S3/
 
 zip lambda_unzip_s3.zip lambda_function.py
