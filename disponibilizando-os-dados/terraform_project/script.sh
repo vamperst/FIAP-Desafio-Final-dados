@@ -13,6 +13,7 @@ if [ -z "$GROUP_NAME" ]; then
     exit 1
 fi
 
+
 # Definindo variáveis
 BUCKET_NAME="grupo-fiap-anime-$GROUP_NAME"
 DATASET_PATH_S3="dados-brutos/"
