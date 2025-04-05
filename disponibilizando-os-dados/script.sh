@@ -22,7 +22,7 @@ FILE_PATH="caminho/para/seu/arquivo.tf"
 LINK_TO_DATASET="https://rb.gy/vuzxp4"
 CRAWLER_NAME="animes_crawler"
 
-git lfs pull
+
 
 # Criando o bucket no S3 caso não exista
 # Verificando se o bucket já existe
@@ -41,34 +41,31 @@ else
     fi
 fi
 
-# Verificando se o dataset já foi baixado
-if [ -d "dataset" ]; then
-    echo "O dataset já foi baixado."
-else
-    echo "O dataset não foi encontrado. Iniciando o download..."
-    # Descompactando o arquivo
-    # unzip ../../dataset.zip -d dataset
-    # Verificando se a descompactação foi bem-sucedida
-    # if [ $? -eq 0 ]; then
-    #     echo "Descompactação do dataset concluída com sucesso."
-    # else
-    #     echo "Erro ao descompactar o dataset."
-    #     exit 1
-    # fi
-    # Fazendo o upload do dataset para o bucket S3
-    aws configure set default.s3.max_concurrent_requests 5 
-    aws configure set default.s3.multipart_threshold 64MB  
-    aws configure set default.s3.multipart_chunksize 16MB
-    aws s3 cp parquet-files/ s3://$BUCKET_NAME/$DATASET_PATH_S3 --recursive
-    # Verificando se o upload foi bem-sucedido
-    if [ $? -eq 0 ]; then
-        echo "Upload do dataset para o bucket $BUCKET_NAME concluído com sucesso."
-    else
-        echo "Erro ao fazer o upload do dataset para o bucket $BUCKET_NAME."
-        exit 1
-    fi
-fi
+cd Colocando-dados-no-S3/
 
+zip lambda_unzip_s3.zip lambda_function.py
+
+terraform init
+echo "Terraform inicializado com sucesso."
+# criando o tfvars
+echo "Criando o arquivo de variáveis..."
+rm -f terraform.tfvars
+cat <<EOL > terraform.tfvars
+s3_bucket_name = "$BUCKET_NAME"
+signed_zip_url = "$LINK_TO_DATASET"
+EOL
+
+echo "Terraform rodando apply..."
+terraform plan --var="s3_bucket_name=$BUCKET_NAME" --var="signed_zip_url=$LINK_TO_DATASET"
+
+echo "Terraform rodando apply..."
+terraform apply -auto-approve --var="s3_bucket_name=$BUCKET_NAME" --var="signed_zip_url=$LINK_TO_DATASET"
+
+rm -rf .terraform
+
+
+
+cd ../Crawler/
 # Rodar Terraform
 terraform init
 echo "Terraform inicializado com sucesso."
