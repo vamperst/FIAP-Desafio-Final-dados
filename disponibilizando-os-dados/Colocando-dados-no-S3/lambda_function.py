@@ -6,7 +6,7 @@ import io
 
 def lambda_handler(event, context):
     s3_bucket = os.environ["S3_BUCKET"]
-    s3_output_prefix = os.environ.get("S3_OUTPUT_PREFIX", "unzipped/")
+    s3_output_prefix = os.environ.get("S3_OUTPUT_PREFIX", "dados-brutos/")
     signed_url = os.environ["SIGNED_ZIP_URL"]
 
     # Baixar o arquivo ZIP usando urllib (sem requests!)
