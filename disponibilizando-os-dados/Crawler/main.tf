@@ -71,13 +71,19 @@ resource "aws_glue_crawler" "s3_crawler" {
   database_name = aws_glue_catalog_database.glue_database.name
 
   s3_target {
-    path = "s3://${data.aws_s3_bucket.existing_bucket.bucket}/${var.s3_data_path}parquet-files/"
+    path           = "s3://${data.aws_s3_bucket.existing_bucket.bucket}/${var.s3_data_path}parquet-files/"
+    classification = "parquet"
   }
 
   schema_change_policy {
-    delete_behavior = "LOG"
+    delete_behavior = "DEPRECATE_IN_DATABASE" # evita que ele exclua tabelas antigas
     update_behavior = "UPDATE_IN_DATABASE"
   }
+
+  recrawl_policy {
+    recrawl_behavior = "CRAWL_EVERYTHING" # ou "CRAWL_NEW_FOLDERS_ONLY" para dados particionados
+  }
+
 }
 
 resource "aws_athena_workgroup" "athena_workgroup" {
