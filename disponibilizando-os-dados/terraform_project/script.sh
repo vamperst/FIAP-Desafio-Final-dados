@@ -20,6 +20,7 @@ DATASET_PATH_S3="dados-brutos/"
 REGION="us-east-1"
 FILE_PATH="caminho/para/seu/arquivo.tf"
 LINK_TO_DATASET="https://rb.gy/vuzxp4"
+CRAWLER_NAME="animes_crawler"
 
 git lfs pull
 
@@ -92,7 +93,7 @@ else
 fi
 
 #executando o crawler
-aws glue start-crawler --name meu-crawler
+aws glue start-crawler --name $CRAWLER_NAME
 # Verificando se o crawler foi iniciado com sucesso
 if [ $? -eq 0 ]; then
     echo "Crawler iniciado com sucesso."
@@ -102,7 +103,7 @@ else
 fi
 # Verificando o status do crawler
 while true; do
-    STATUS=$(aws glue get-crawler --name meu-crawler --query 'Crawler.State' --output text)
+    STATUS=$(aws glue get-crawler --name $CRAWLER_NAME --query 'Crawler.State' --output text)
     if [ "$STATUS" == "READY" ]; then
         echo "Crawler finalizado com sucesso."
         break
