@@ -41,7 +41,16 @@ else
     fi
 fi
 
-bash install_terraform_cloudshell.sh
+# verificar se terraform está instalado
+if ! command -v terraform &> /dev/null
+then
+    echo "Terraform não encontrado. Instalando..."
+    # Baixando e instalando o Terraform
+    bash install_terraform_cloudshell.sh
+else
+    echo "Terraform já está instalado."
+fi
+
 
 cd Colocando-dados-no-S3/
 
