@@ -18,7 +18,7 @@ BUCKET_NAME="grupo-fiap-anime-$GROUP_NAME"
 DATASET_PATH_S3="dados-brutos/"
 REGION="us-east-1"
 FILE_PATH="caminho/para/seu/arquivo.tf"
-LINK_TO_DATASET="https://bit.ly/fiap-arquivos-brutos-anime"
+LINK_TO_DATASET="https://rb.gy/vuzxp4"
 
 # Criando o bucket no S3 caso não exista
 # Verificando se o bucket já existe
