@@ -21,6 +21,8 @@ REGION="us-east-1"
 FILE_PATH="caminho/para/seu/arquivo.tf"
 LINK_TO_DATASET="https://rb.gy/vuzxp4"
 
+git lfs pull
+
 # Criando o bucket no S3 caso não exista
 # Verificando se o bucket já existe
 EXISTING_BUCKET=$(aws s3api list-buckets --query "Buckets[?Name=='$BUCKET_NAME'].Name" --output text)
@@ -43,8 +45,6 @@ if [ -d "dataset" ]; then
     echo "O dataset já foi baixado."
 else
     echo "O dataset não foi encontrado. Iniciando o download..."
-    # Fazendo o download do dataset
-    
     # Descompactando o arquivo
     unzip ../../dataset.zip -d dataset
     # Verificando se a descompactação foi bem-sucedida
