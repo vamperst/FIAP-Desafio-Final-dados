@@ -46,19 +46,19 @@ if [ -d "dataset" ]; then
 else
     echo "O dataset não foi encontrado. Iniciando o download..."
     # Descompactando o arquivo
-    unzip ../../dataset.zip -d dataset
+    # unzip ../../dataset.zip -d dataset
     # Verificando se a descompactação foi bem-sucedida
-    if [ $? -eq 0 ]; then
-        echo "Descompactação do dataset concluída com sucesso."
-    else
-        echo "Erro ao descompactar o dataset."
-        exit 1
-    fi
+    # if [ $? -eq 0 ]; then
+    #     echo "Descompactação do dataset concluída com sucesso."
+    # else
+    #     echo "Erro ao descompactar o dataset."
+    #     exit 1
+    # fi
     # Fazendo o upload do dataset para o bucket S3
     aws configure set default.s3.max_concurrent_requests 5 
     aws configure set default.s3.multipart_threshold 64MB  
     aws configure set default.s3.multipart_chunksize 16MB
-    aws s3 cp dataset/parquet-files/ s3://$BUCKET_NAME/$DATASET_PATH_S3 --recursive
+    aws s3 cp parquet-files/ s3://$BUCKET_NAME/$DATASET_PATH_S3 --recursive
     # Verificando se o upload foi bem-sucedido
     if [ $? -eq 0 ]; then
         echo "Upload do dataset para o bucket $BUCKET_NAME concluído com sucesso."
