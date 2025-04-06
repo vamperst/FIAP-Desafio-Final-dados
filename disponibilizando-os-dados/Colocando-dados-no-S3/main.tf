@@ -2,6 +2,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
+locals {
+  short_id = substr(md5(uuid()), 0, 6)
+}
+
 variable "s3_bucket_name" {
   description = "Bucket de destino para arquivos descompactados"
   type        = string
@@ -13,7 +17,7 @@ variable "signed_zip_url" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name = "lambda-unzip-s3-role"
+  name = "lambda-unzip-s3-role-${local.short_id}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -33,7 +37,7 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
 }
 
 resource "aws_iam_role_policy" "lambda_s3_access" {
-  name = "lambda-unzip-s3-policy"
+  name = "lambda-unzip-s3-policy-${local.short_id}"
   role = aws_iam_role.lambda_role.id
 
   policy = jsonencode({
@@ -49,7 +53,7 @@ resource "aws_iam_role_policy" "lambda_s3_access" {
 }
 
 resource "aws_lambda_function" "unzip_lambda" {
-  function_name = "S3ZipUnpacker"
+  function_name = "S3ZipUnpacker-${local.short_id}"
   role          = aws_iam_role.lambda_role.arn
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.11"
