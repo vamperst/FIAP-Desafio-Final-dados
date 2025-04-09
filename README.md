@@ -110,34 +110,35 @@ Todos os cenários têm o mesmo peso de avaliação (conforme os critérios defi
 
 **Critérios de Avaliação:**
 
-**Apresentação (Pitch) com Dashboard no QuickSight**
-Cada grupo deverá realizar uma apresentação de até 5 minutos, utilizando o dashboard desenvolvido no Amazon QuickSight como base para comunicar suas descobertas.
+- **Apresentação (Pitch) com Dashboard no QuickSight**
+    Cada grupo deverá realizar uma apresentação de até 5 minutos, utilizando o dashboard desenvolvido no Amazon QuickSight como base para comunicar suas descobertas.
 
-A avaliação considerará os seguintes aspectos:
+    A avaliação considerará os seguintes aspectos:
 
-**Clareza dos Insights** 
-Os principais achados foram comunicados de forma objetiva?
+- **Clareza dos Insights** 
+    Os principais achados foram comunicados de forma objetiva?
 
-Os gráficos escolhidos foram explorados de forma que traduzam dados em informação útil para o negócio?
+    Os gráficos escolhidos foram explorados de forma que traduzam dados em informação útil para o negócio?
 
-O grupo evitou apenas “ler gráficos” e realmente explicou o que os dados significam?
+    O grupo evitou apenas “ler gráficos” e realmente explicou o que os dados significam?
 
-**Estrutura da Apresentação**
-A apresentação teve início (contexto do problema), meio (análises realizadas) e fim (conclusões/recomendações)?
+- **Estrutura da Apresentação**
+    A apresentação teve início (contexto do problema), meio (análises realizadas) e fim (conclusões/recomendações)?
 
-Os dados e as visualizações foram conectados a uma narrativa coerente, voltada para responder o cenário de negócio proposto?
+    Os dados e as visualizações foram conectados a uma narrativa coerente, voltada para responder o cenário de negócio proposto?
 
-**Domínio do Dashboard**
-Os alunos demonstraram segurança na navegação pelo QuickSight, sabendo onde encontrar os dados, interagir com filtros e explicar as visualizações?
+- **Domínio do Dashboard**
+    Os alunos demonstraram segurança na navegação pelo QuickSight, sabendo onde encontrar os dados, interagir com filtros e explicar as visualizações?
 
-Usaram recursos como filtros, drill-down ou QuickSight Q para enriquecer a apresentação?
+    Usaram recursos como filtros, drill-down ou QuickSight Q para enriquecer a apresentação?
 
-Conseguiram responder perguntas da banca ou discutir limitações e alternativas?
+    Conseguiram responder perguntas da banca ou discutir limitações e alternativas?
 
 **Comunicação**
 A linguagem foi acessível e adequada a um público executivo ou de produto?
 
 O grupo demonstrou confiança e clareza ao explicar as decisões tomadas ao longo do desafio?
+
 
 Caso queira, existe um roteiro como [exemplo](/roteiro_pitch_quicksight.md).
 
