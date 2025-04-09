@@ -115,19 +115,19 @@ Todos os cenários têm o mesmo peso de avaliação (conforme os critérios defi
 
     A avaliação considerará os seguintes aspectos:
 
-- **Clareza dos Insights** 
+1. **Clareza dos Insights** 
     Os principais achados foram comunicados de forma objetiva?
 
     Os gráficos escolhidos foram explorados de forma que traduzam dados em informação útil para o negócio?
 
     O grupo evitou apenas “ler gráficos” e realmente explicou o que os dados significam?
 
-- **Estrutura da Apresentação**
+2. **Estrutura da Apresentação**
     A apresentação teve início (contexto do problema), meio (análises realizadas) e fim (conclusões/recomendações)?
 
     Os dados e as visualizações foram conectados a uma narrativa coerente, voltada para responder o cenário de negócio proposto?
 
-- **Domínio do Dashboard**
+3. **Domínio do Dashboard**
     Os alunos demonstraram segurança na navegação pelo QuickSight, sabendo onde encontrar os dados, interagir com filtros e explicar as visualizações?
 
     Usaram recursos como filtros, drill-down ou QuickSight Q para enriquecer a apresentação?
