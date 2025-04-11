@@ -141,7 +141,7 @@ Este catálogo fornece informações detalhadas que permitem análises estratég
  
 
 ## 4. Tabela: user_filtered  
-**Descrição:** Tabela que registra interações básicas entre usuários e animes, contendo informações sobre avaliações e identificação de usuários.  
+**Descrição:** Tabela que registra a avaliação do usuário a cada vez que assiste o anime e avaliou.  
 
 | Coluna    | Tipo   | Comentário de Negócio                                                                 |
 |-----------|--------|---------------------------------------------------------------------------------------|
