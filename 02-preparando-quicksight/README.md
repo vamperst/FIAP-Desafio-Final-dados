@@ -1,6 +1,30 @@
 # Instruções sobre o Quicksight
 Os passos a seguir mostram como criar dataset, dashboards e usar IA generativa para construir e explorar dados.
 
+
+## Usando o Athena para explorar dados
+o Athena é um serviço de consulta interativo que permite fazer consultas no seu data lake, como o Amazon S3.
+
+1. Vá para a página do [Athena](https://us-east-1.console.aws.amazon.com/athena/home?region=us-east-1#/landing-page).
+
+2. Clique em **Launch query editor**, no botão laranja na tela.
+
+3. Navegue até a aba de **Settings**.
+![Criando dataset](qs-images-steps/32-qs.png)
+
+4. Em Setting, clique no botão **Manage**
+![Criando dataset](qs-images-steps/33-qs.png)
+
+5. Clique no botão **Browser S3**.
+
+6. Selecione da lista de buckets S3 o único bucket criado na conta, e depois clique em **Choose**
+
+7. No path do seu S3, adicionar `athena-results/`, onde o Athena salvará o resultado de queries. Depois clique no botão **Save**
+![Criando dataset](qs-images-steps/34-qs.png)
+
+8. Clique na aba **Editor** como no passo 3. E você já pode fazer consultas.
+
+
 ## Registrando a conta do Quicksight
 1- Na console, navegue até o serviço do Quicksight na barra de busca. Você será redirecionado para página de serviço.
 
@@ -10,8 +34,48 @@ Os passos a seguir mostram como criar dataset, dashboards e usar IA generativa p
 3- Feche a pop up que aparecerá na tela para onde você foi redirecionado no botão **Close**.
 ![Criando dataset](qs-images-steps/01-qs.png)
 
+## Dando permissão aos datasets
+Para acessar os dados é necessário dar permissão ao Quicksight. 
 
-## Criando seu dataset
+1. No topo direito da página clique em cima do símbolo de uma pessoa.
+![Criando dataset](qs-images-steps/23-qs.png)
+
+2. Selecione a opção **Manage Quicksight**.
+
+3. Selecione a opção no menu lateral **Security & Permissions**. E depois, de baixo da seção **IAM role in use** clique em **Manage**.
+![Criando dataset](qs-images-steps/25-qs.png)
+
+4. Clique no quadrado ao lado do Amazon S3.
+![Criando dataset](qs-images-steps/26-qs.png)
+
+5. No pop up, dê um cheque em todos os quadrados do bucket como na imagem. Depois, clique em **Finish**
+![Criando dataset](qs-images-steps/28-qs.png)
+
+6. Repita o mesmo processo para o Athena. Selecione o quadrado ao lado do Amazon Athena.
+![Criando dataset](qs-images-steps/29-qs.png)
+
+7. No popup, clique em **Skip**.
+![Criando dataset](qs-images-steps/30-qs.png)
+
+8. No final, as caixinhas do Athena e do S3 devem estar com um cheque como na imagem.
+![Criando dataset](qs-images-steps/31-qs.png)
+
+9. Clique no topo da página no logo do Quicksight para voltar a **Home**.
+
+## Mudando o tipo de usuário para usar IA generativa
+Para usar as todas as capacidades de IA generativa do Quicksight, como construir gráficos com IA, vamos mudar o tipo do nosso usuário atual.
+
+1. No topo direito da página clique em cima do símbolo de uma pessoa.
+![Criando dataset](qs-images-steps/23-qs.png)
+
+2. Selecione a opção **Manage Quicksight**.
+
+3. Na nova tela, na frente do email do seu usuário, clique no dropdown onde está a palavra Admin, e selecione agora o **Admin Pro**.
+![Criando dataset](qs-images-steps/24-qs.png)
+
+4. Por fim, clique no topo da página no logo do **Quicksight** para retornar a **Home**.
+
+## Criando datasets
 Para criar um dataset siga os seguintes passos:
 
 1. Clique em **Datasets**, depois em **New Dataset** 
@@ -23,70 +87,73 @@ Para criar um dataset siga os seguintes passos:
     * Athena workgroup: primary
     * SSL is enabled
 
-4. Na lista de tabelas e databases, selecione o database criado com o crawler, e a tabela desejada. Depois, clique em **Select**
+4. Na lista de tabelas e databases, selecione o database criado com o crawler, e a tabela desejada. Depois, clique em **Edit/Preview Data**.
 ![Criando dataset](qs-images-steps/2-qs.png)
 
-5. Você pode editar o dataset antes de criar um gráfico, mas vamos fazer a criação do gráfico primeiro. Clique em **Visualize**
-![Criando dataset](qs-images-steps/3-qs.png)
+5. Você será redirecionado. Nessa nova tela, você pode: fazer modificações nas colunas, mudar os tipos de dados, excluir colunas. No topo da página, renomeie o dataset para um nome desejado. Para modificar as colunas e o tipo de dados, basta clicar em cima de cada uma delas.
+![Criando dataset](qs-images-steps/10-qs.png)
 
+6. Se você quiser fazer join com mais de uma tabela, siga próximos passos. Se você não deseja fazer join entre duas tabelas, siga para o passo 13 dessa seção.
 
-6. A qualquer momento você pode voltar para home, clicando no logo **Quicksight** no topo superior esquerdo da tela.
+7. Para adicionar mais um dataset para fazer Join, clique no botão **Add Data** no canto superior direito.
+![Criando dataset](qs-images-steps/16-qs.png)
+
+8. No pop up que aparecer, selecione no dropdown a opção **Data source**.
+
+9. Selecione o a data source `athena-datasource` criada nos passos anteriores, então clique em **Select**.
+![Criando dataset](qs-images-steps/17-qs.png)
+
+10. Selecione da lista as tabelas do Athena que deseja fazer join, depois clique em **Select**.
+![Criando dataset](qs-images-steps/18-qs.png)
+
+11. Na tela, clique em cima do símbolo de Join entre os dois datasets (1). Depois, selecione qual a chave de join em **Join clause** entre os dois datasets, você pode usar mais de uma chave (note a opção Add new join clause). Por fim, selecione o **Join type** e clique em **Apply**.
+![Criando dataset](qs-images-steps/19-qs.png)
+
+12. Você pode mudar no nome e o tipo das colunas se necessário. Basta clicar em cima da coluna desejada.
+
+13. Mude o nome da sua tabela no topo da página, depois clique em **Save & Publish**. Retorne a página inicial clicando no logo do **Quicksight**.
+![Criando dataset](qs-images-steps/20-qs.png)
 
 ## Criando sua primeira análise
-Você foi redirecionado para a página de criação de análises. Uma análise é quando o dashboard está em construção, ainda não foi publicado.
+Uma análise é quando o dashboard está em construção, ainda não foi publicado. Você está na tela de Home. Para retornar a tela de Home a qualquer momento basta clicar no logo do Quicksight no topo da página.
 
-1. No pop-up, deixe todas as opções padrões, e clique no botão **Create**.
+1. No menu lateral clique em **Datasets**.
+![Criando dataset](qs-images-steps/21-qs.png)
+
+2. Clique em cima do nome do dataset criado.
+
+3. Na nova tela, clique em **Use in Analysis**.
+![Criando dataset](qs-images-steps/22-qs.png)
+
+4. No pop-up, deixe todas as opções padrões, e clique no botão **Create**.
 ![Criando dataset](qs-images-steps/5-qs.png)
 
-2. Para criar um gráfico basta selecionar o tipo de gráfico desejado (1) e depois as colunas desejadas (2). Para adicionar mais gráficos, você pode usar o botão **Add** (3a) ou **Insert** (3b).
+5. Para criar um gráfico basta selecionar o tipo de gráfico desejado (1) e depois as colunas desejadas (2). Para adicionar mais gráficos, você pode usar o botão **Add** (3a) ou **Insert** (3b)
 ![Criando dataset](qs-images-steps/6-qs.png)
 
-3. Se você quiser, pode mudar algumas características das colunas, como o tipo de agregação. Basta clicar nos três pontos ao lado da coluna.
+6. Se você quiser, pode mudar algumas características das colunas, como o tipo de agregação. Basta clicar nos três pontos ao lado da coluna.
 ![Criando dataset](qs-images-steps/7-qs.png)
 
-4. Para modificar o visual, basta clicar no lápis no topo do gráfico.
+5. Para modificar o visual, basta clicar no lápis no topo do gráfico.
 ![Criando dataset](qs-images-steps/8-qs.png)
 
-5. Você pode usar IA generativa para construir gráficos.
+6. Você pode usar IA generativa para construir gráficos.
     * Aperte o botão **Build Visual** no topo da página.
     * Depois escreva em inglês o que deseja construir. Depois clique em **Build**.
     * Quando o gráfico estiver pronto, clique em **Add to Analysis**.
 ![Criando dataset](qs-images-steps/9-qs.png)
 
 ## Adicionando mais datasets
-Para adicionar mais datasets no seu visual siga os seguintes passos.
+Se você desejar adicionar mais datasets à análise, siga os passos a seguir.
 
-1. Clique no logo **Quicksight** no topo esquerdo da página para voltar a Home.
-
-2. Assim como na seção **Criando seu dataset**, clique na aba **Datasets**, depois em **New Dataset**.
-
-3. Selecione o Athena, dê o nome ao datasource como `athena-datasource`. Depois clique em **Create data source**.
-
-4. Selecione o database e a tabela, e então clique em **Edit/Preview Data**.
-
-5. Você será redirecionado. Nessa nova tela, você pode: fazer modificações nas colunas, mudar os tipos de dados, excluir colunas. No topo da página, renomeie o dataset para um nome desejado (1).
-![Criando dataset](qs-images-steps/10-qs.png)
-
-6. Selecione o **Spice**, uma espécie de camada de cache para salvar o dataset.
-
-7. Para adicionar mais dataset para fazer **Join**, você pode clicar no botão **Add Data** se quiser.
-
-8. Para finalizar, clique no botão **Save & Publish**.
-
-9. Retorne a Home, clicando no topo esquerdo da página no logo do **Quicksight**.
-
-10. Clique na aba **Analyses**, no menu lateral da página.
-
-11. Clique em cima no nome da Analysis desejada, e ela se abrirá.
-
-12. No topo esquerdo da página, clique no dropdown **Dataset**, depois em **Add New dataset**.
+1. No topo esquerdo da página, clique no dropdown **Dataset**, depois em **Add New dataset**.
 ![Criando dataset](qs-images-steps/11-qs.png)
 
-13. Selecione da lista o dataset criado nos passos anteriores e clique no botão **Select**.
+2. Selecione da lista o dataset criado nos passos anteriores e clique no botão **Select**.
 
-14. Clique no botão **x** ou **Close** para fechar o pop-up.
+3. Clique no botão **x** ou **Close** para fechar o pop-up.
 
-15. Para alternar entre datasets, você pode usar o dropdown no topo da página. Selecione o dataset ao qual deseja construir um gráfico, e depois siga o processo normalmente de criar visuais para este dataset.
+4. Para alternar entre datasets, você pode usar o dropdown no topo da página. Selecione o dataset ao qual deseja construir um gráfico, e depois siga o processo normalmente de criar visuais para este dataset.
 
 ## Publique um dataset
 Quando tiver terminado as edições nas análises, publique o dashboard.
