@@ -14,9 +14,11 @@ echo "Using AWS Account ID: ${AWS_ACCOUNT_ID}"
 echo "Using Region: ${REGION}"
 
 # Get the first bucket name from the account
-BUCKET_NAME=$(aws s3 ls | head -n 1 | awk '{print $3}')
-if [ -z "$BUCKET_NAME" ]; then
-    echo "No S3 bucket found in the account"
+PREFIX="grupo-fiap-anime-"
+BUCKET_NAME=$(aws s3api list-buckets --query "Buckets[?starts_with(Name, \⁠ ${PREFIX}\ ⁠)].Name | [0]" --output text)
+
+if [ "$BUCKET_NAME" == "None" ]; then
+    echo "No bucket found with prefix '$PREFIX'. Exiting."
     exit 1
 fi
 echo "Using bucket: ${BUCKET_NAME}"

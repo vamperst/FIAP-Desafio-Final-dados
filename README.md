@@ -77,7 +77,7 @@ Entender o comportamento de consumo e engajamento por tipo de anime:
 
 **Datasets sugeridos:**  
 - `anime-dataset-2023`: contém o tipo de anime (TV, Movie, OVA, etc.).  
-- `user-filtered`: dados de usuários com animes assistidos e progresso.
+- `Anime-filtered`: dados de usuários com animes assistidos e progresso.
 
 ---
 
