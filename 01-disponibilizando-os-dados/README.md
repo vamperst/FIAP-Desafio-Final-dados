@@ -15,7 +15,7 @@ Siga os passos abaixo para executar o `script.sh` utilizando o AWS CloudShell:
 3. **Navegue até a pasta do script**  
     Acesse o diretório onde o `script.sh` está localizado:
     ```bash
-    cd Desafio-Final-dados/01-disponibilizando-os-dados
+    cd /home/cloudshell-user/Desafio-Final-dados/01-disponibilizando-os-dados
     ```
 
 4. **Execute o script**  
