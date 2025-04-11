@@ -1,6 +1,18 @@
-**Desafio Técnico AWS: Análise de Dados de Animes**
+![](img/Fiap-logo-novo.jpg)
 
-Este desafio é projetado para grupos compostos por alunos de MBA em BI e Engenharia de Dados, com duração máxima de 1 hora e 30 minutos. Cada grupo utilizará sua própria conta AWS para desenvolver uma solução que abrange desde a aquisição dos dados até a disponibilização de um dashboard interativo. As ferramentas AWS a serem utilizadas incluem S3, Glue, Athena, QuickSight, QuickSight Q e Amazon Q.
+# **Desafio Técnico AWS: Análise de Dados de Animes**
+
+### Preparação do Ambiente
+
+Siga as instruções abaixo para preparar o ambiente AWS para o desafio. O objetivo é garantir que todos os grupos tenham acesso aos dados necessários para desenvolver suas soluções.
+
+Primeiro você vai [disponibilizar os dados](01-disponibilizando-os-dados/README.md) no S3 e criar o Glue Crawler para que os dados sejam lidos pelo Athena. Depois, você vai [criar o QuickSight](02-preparando-quicksight/README.md) para que os dados sejam lidos pelo QuickSight.
+
+![](img/Desafio%20Final%20de%20dados.drawio.png)
+
+### Descrição do Desafio
+
+Este desafio é projetado para grupos compostos por alunos de MBA em BI e Engenharia de Dados, com duração máxima de 3 horas. Cada grupo utilizará sua própria conta AWS para desenvolver uma solução que abrange desde a aquisição dos dados até a disponibilização de um dashboard interativo. As ferramentas AWS a serem utilizadas incluem S3, Glue, Athena, QuickSight, QuickSight Q e Amazon Q.
 
 **Datasets Disponíveis:**
 
