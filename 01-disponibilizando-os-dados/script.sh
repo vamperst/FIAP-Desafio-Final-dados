@@ -153,7 +153,6 @@ echo "Using Region: ${REGION}"
 
 # Get the first bucket name from the account
 PREFIX="grupo-fiap-anime-"
-BUCKET_NAME=$(aws s3api list-buckets --query "Buckets[?starts_with(Name, \⁠ ${PREFIX}\ ⁠)].Name | [0]" --output text)
 
 if [ "$BUCKET_NAME" == "None" ]; then
     echo "No bucket found with prefix '$PREFIX'. Exiting."
@@ -162,7 +161,7 @@ fi
 echo "Using bucket: ${BUCKET_NAME}"
 
 # Set Athena output location using the found bucket
-OUTPUT_LOCATION="s3://${BUCKET_NAME}/athena-results/"
+OUTPUT_LOCATION="s3://${BUCKET_NAME}/queries_athena/"
 
 # Create Athena View
 QUERY="CREATE OR REPLACE VIEW \"user_score_2023_animes_data_2023_user_details_2023\" AS 
