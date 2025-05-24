@@ -155,7 +155,7 @@ Se você desejar adicionar mais datasets à análise, siga os passos a seguir.
 
 4. Para alternar entre datasets, você pode usar o dropdown no topo da página. Selecione o dataset ao qual deseja construir um gráfico, e depois siga o processo normalmente de criar visuais para este dataset.
 
-## Publique um dataset
+## Publique um dataset e gere o PDF
 Quando tiver terminado as edições nas análises, publique o dashboard.
 Você pode repetir este processo de publicação de dashboards quantas vezes for necessário.
 
@@ -171,6 +171,16 @@ Você pode repetir este processo de publicação de dashboards quantas vezes for
 
 5. Você será redirecionado para a seguinte tela, onde pode interagir com os gráficos.
 ![Criando dataset](qs-images-steps/14-qs.png)
+
+6. Para exportar o PDF pra entrega e apresentação do grupo, clique no botão com uma seta no meio como a imagem abaixo. Depois clique na opção **Generate PDF**.
+![Criando dataset](qs-images-steps/14a-qs.png)
+
+7. No canto superior direito na tela, uma mensagem num retângulo azul dizendo que o PDF começou a ser processado aparecerá **Working on PDF file.** Clique na opção **View Exports**.
+![Criando dataset](qs-images-steps/14b-qs.png)
+
+8. O PDF leva cerca de alguns segundos ou minutos para ficar pronto. Assim que ele estiver pronto o status será **Your PDF is ready**. Para fazer o download do PDF, você pode clicar no botão **Download** ou na opção **Click to download**.
+![Criando dataset](qs-images-steps/14c-qs.png)
+
 
 ## Usando IA generativa para descobrir insights
 É possível usar a IA generativa para explorar seus dados.

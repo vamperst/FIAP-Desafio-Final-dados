@@ -38,7 +38,7 @@ SELECT
 FROM
   ((users_score_2023 us
 LEFT JOIN anime_dataset_2023 a ON (a.anime_id = us.anime_id))
-LEFT JOIN users_details_2023 ud ON (us.user_id = ud.mal_id))"
+LEFT JOIN users_details_2023 ud ON (us.user_id = ud.mal_id)) LIMIT 10000"
 
 # Start Athena query execution
 QUERY_EXECUTION_ID=$(aws athena start-query-execution \
