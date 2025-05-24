@@ -27,18 +27,20 @@ echo "Using bucket: ${BUCKET_NAME}"
 OUTPUT_LOCATION="s3://${BUCKET_NAME}/athena-results/"
 
 # Create Athena View
-QUERY="CREATE OR REPLACE VIEW \"user_score_2023_animes_data_2023_user_details_2023\" AS 
+QUERY="CREATE OR REPLACE VIEW "user_score_2023_animes_data_2023_user_details_2023" AS 
 SELECT
   a.*
 , us.user_id
 , us.anime_title
 , us.rating user_rating
 , ud.*
-, (CAST(YEAR(current_date) AS INT) - CAST(REGEXP_EXTRACT(birthday, '^(\d{4})', 1) AS INT)) user_age
+, (CAST(YEAR(current_date) AS INT) - CAST(REGEXP_EXTRACT(birthday, '^(\d{4})', 1) AS INT)) user_age,
+ from_unixtime(aired_from / 1000000000) AS aired_from_convertida, from_unixtime(aired_to / 1000000000) AS aired_to_convertida
 FROM
   ((users_score_2023 us
 LEFT JOIN anime_dataset_2023 a ON (a.anime_id = us.anime_id))
-LEFT JOIN users_details_2023 ud ON (us.user_id = ud.mal_id)) LIMIT 10000"
+LEFT JOIN users_details_2023 ud ON (us.user_id = ud.mal_id))
+LIMIT 10000;"
 
 # Start Athena query execution
 QUERY_EXECUTION_ID=$(aws athena start-query-execution \
